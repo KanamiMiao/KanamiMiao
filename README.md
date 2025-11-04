@@ -1,7 +1,12 @@
 ## Hellow, I'm KanamiMiao.
-![kanami1](https://road-to-kaggle-grandmaster.vercel.app/api/simple/{kanami1})
+<!-- 简洁样式 -->
+![kanami1](https://road-to-kaggle-grandmaster.vercel.app/api/simple/kanami1)
 
+<!-- 详细样式 -->
+![kanami1](https://road-to-kaggle-grandmaster.vercel.app/api/badges/kanami1)
 
+<!-- 完整统计 -->
+![kanami1](https://road-to-kaggle-grandmaster.vercel.app/api/stats/kanami1)
 
 <!--
 **KanamiMiao/KanamiMiao** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
