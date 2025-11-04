@@ -1,34 +1,44 @@
 name: Update Kaggle Badge
+
 on:
   schedule:
-    - cron: '0 0 * * 1' # 每周一UTC时间0点运行一次，你可根据需要调整cron表达式
-  workflow_dispatch: # 允许手动触发工作流
+    - cron: '0 0 * * 1'  # 每周一UTC时间0点运行（北京时间周一早上8点）
+  workflow_dispatch:      # 允许手动触发
+
 jobs:
   update:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    # 步骤1：获取仓库代码
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+    # 步骤2：设置Python环境
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
         
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.13'
-          
-      - name: Install dependencies
-        run: pip install requests pillow # 安装脚本所需的库，按需添加
+    # 步骤3：安装Python库
+    - name: Install dependencies
+      run: |
+        pip install requests
+        # 如果有其他需要的库，在这里添加
         
-      - name: Run script to update badge
-        env:
-          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
-          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
-          KAGGLE_SECRET: ${{ secrets.KAGGLE_SECRET }}
-        run: python update_kaggle_badge.py # 运行你的脚本
+    # 步骤4：运行Python脚本更新徽章
+    - name: Run script to update badge
+      env:
+        KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+        KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+      run: |
+        # 这里运行你的Python脚本
+        python scripts/update_kaggle_badge.py
         
-      - name: Commit and push if changed
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
-          git diff --staged --quiet || git commit -m "Automated update of Kaggle badge"
-          git push
+    # 步骤5：提交并推送更改
+    - name: Commit and push if changed
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git diff --staged --quiet || (git commit -m "Auto-update Kaggle badge" && git push)
