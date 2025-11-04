@@ -1,6 +1,6 @@
 ## Hellow, I'm KanamiMiao.
 [![Kaggle](https://img.shields.io/badge/Kaggle-KanamiMiao-20BEFF?logo=kaggle&logoColor=white)](https://www.kaggle.com/kanami1)
-[![My Kaggle Stats](旧的徽章图片URL)](https://www.kaggle.com/kanami1)
+[![Kaggle Stats](https://img.shields.io/badge/Kaggle-Updating...-Blue?logo=kaggle)](https://www.kaggle.com/kanami1)
 
 
 <!--
